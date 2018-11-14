@@ -24,5 +24,33 @@ require "etiqueta/version"
     def nrg_kj_ir
         (nrg_kj/8400).round(2)*100
     end
+    
+    def nrg_cal_ir
+        (nrg_kj/2000).round(2)*100
+    end
+    
+    def grasa_ir
+        (@grasa/70).round(2)*100
+    end
+    
+    def saturada_ir
+        (@saturada/20).round(2)*100
+    end
+    
+    def hidrato_ir
+        (@hidrato/260).round(2)*100
+    end
+    
+    def azucar_ir
+        (@azucar/90).round(2)*100
+    end
+    
+    def proteina_ir
+        (@proteina/50).round(2)*100
+    end
+    
+    def sal_ir
+        (@sal/6).round(2)*100
+    end
   end
 #end
