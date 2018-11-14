@@ -111,10 +111,23 @@ class Lista
         @tail.next=nuevo_nodo
         @tail = nuevo_nodo
     end
+    
     def push_head(value)
         nuevo_nodo = Node.new(value, @head, nil)
         @head.prev=nuevo_nodo
         @head = nuevo_nodo
+    end
+    
+    def pop_head()
+        elim_nodo = @head
+        @head = elim_nodo.next
+        @head.prev = nil
+    end
+    
+    def pop_tail()
+        elim_nodo = @tail
+        @tail = elim_nodo.prev
+        @tail.next = nil
     end
     
 end

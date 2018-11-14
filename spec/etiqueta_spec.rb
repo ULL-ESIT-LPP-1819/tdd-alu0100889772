@@ -84,4 +84,33 @@ RSpec.describe Etiqueta do
     list.pop_head
     expect(list.to_s).to eq("2")
   end
+  
+  it "almacena etiquetas" do
+    list = (Lista.new(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1)))
+    expect(list.head.value.formato).to eq("
+    Queso               Cada 100g o 100ml      IR
+    
+    Valor energético             201.7 kj    2.4%
+    (kj/kcal)                   47.5 kcal
+    
+    Grasas de las                   0.1 g   0.14%
+    cuales:
+    Saturadas                      0.09 g   0.45%
+    Monoinsaturadas                   0 g       -
+    Poliinsaturadas                   0 g       -
+    
+    Hidratos de                     3.5 g   1.34% 
+    carbono de los
+    cuales:
+    Azucares                        3.5 g   3.88%
+    Polialcoholes                     0 g       -
+    Almidones                         0 g       -
+    
+    Fibra alimentaria                 0 g       -
+    
+    Proteinas                       8.0 g   16.0%
+    
+    Sal                             0.1 g   1.66%")
+  end
+
 end
