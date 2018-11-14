@@ -83,9 +83,38 @@ require "etiqueta/version"
 #end
 
 class Lista
-    attr_reader :head, :tail
     Node = Struct.new(:value, :next, :prev)
-    def initialize
-        @head, @tail = nil, nil
+    attr_reader :head, :tail
+    def initialize(value)
+        nuevo_nodo = Node.new(value, nil, nil)
+        @head, @tail = nuevo_nodo, nuevo_nodo
     end
+    
+    def to_s
+        nodo = @head
+        chain = ""
+        fin=false
+        while(fin==false) do
+            chain = chain + "#{nodo.value} "
+            
+            if(nodo!=tail)
+                nodo=@head.next
+            elsif(nodo==tail)
+                fin=true
+            end
+        end
+        chain[0,chain.size-1]
+    end
+    
+    def push_tail(value)
+        nuevo_nodo = Node.new(value, nil, @tail)
+        @tail.next=nuevo_nodo
+        @tail = nuevo_nodo
+    end
+    def push_head(value)
+        nuevo_nodo = Node.new(value, @head, nil)
+        @head.prev=nuevo_nodo
+        @head = nuevo_nodo
+    end
+    
 end

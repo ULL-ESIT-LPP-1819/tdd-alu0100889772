@@ -65,7 +65,16 @@ RSpec.describe Etiqueta do
   end
   
   it "crea una lista" do
-    Lista.new()
+    Lista.new(2)
   end
   
+  it "pushea un nodo" do
+    Lista.new(3).push_tail(2)
+  end
+  
+  it "muestra lista" do
+    list = (Lista.new(3))
+    list.push_tail(2)
+    expect(list.to_s).to eq("3 2")
+  end
 end
