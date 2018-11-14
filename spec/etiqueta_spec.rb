@@ -1,5 +1,4 @@
 require "spec_helper"
-require "./lib/etiqueta/etiq"
 
 RSpec.describe Etiqueta do
   it "has a version number" do
@@ -20,6 +19,10 @@ RSpec.describe Etiqueta do
   
   it "calcula kilojulios" do
     expect((Etiq.new("Queso",0.1,0.09,3.5,3.5,8,0.1)).nrg_kj).to eq(201.7)
+  end
+  
+  it "recibe atributos opcionales" do
+    expect((Etiq.new("Queso",0.1,0.09,3.5,3.5,8,0.1,0.006,0.004)).poliinsat).to eq(0.004)
   end
   
 end
