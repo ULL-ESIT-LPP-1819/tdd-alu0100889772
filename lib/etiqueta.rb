@@ -22,35 +22,62 @@ require "etiqueta/version"
     end
     
     def nrg_kj_ir
-        (nrg_kj/8400).round(4)*100
+        ((nrg_kj/8400)*10000).floor / 100.0
     end
     
     def nrg_cal_ir
-        (nrg_kj/2000).round(4)*100
+        ((nrg_kj/2000)*10000).floor / 100.0
     end
     
     def grasa_ir
-        (@grasa/70).round(4)*100
+        ((@grasa/70)*10000).floor / 100.0
     end
     
     def saturada_ir
-        (@saturada/20).round(4)*100
+        ((@saturada/20)*10000).floor / 100.0
     end
     
     def hidrato_ir
-        (@hidrato/260).round(4)*100
+        ((@hidrato/260)*10000).floor / 100.0
     end
     
     def azucar_ir
-        (@azucar/90).round(4)*100
+        ((@azucar/90)*10000).floor / 100.0
     end
     
     def proteina_ir
-        (@proteina/50).round(4)*100
+        ((@proteina/50)*10000).floor / 100.0
     end
     
     def sal_ir
-        (@sal/6).round(4)*100
+        ((@sal/6)*10000).floor / 100.0
+    end
+    
+    def formato
+        "
+    Queso               Cada 100g o 100ml      IR
+    
+    Valor energético             #{nrg_kj} kj    #{nrg_kj_ir}%
+    (kj/kcal)                   #{nrg_cal} kcal
+    
+    Grasas de las                   #{@grasa} g   #{grasa_ir}%
+    cuales:
+    Saturadas                      #{@saturada} g   #{saturada_ir}%
+    Monoinsaturadas                   #{@monoinsat} g       -
+    Poliinsaturadas                   #{@poliinsat} g       -
+    
+    Hidratos de                     #{@hidrato} g   #{hidrato_ir}% 
+    carbono de los
+    cuales:
+    Azucares                        #{@azucar} g   #{azucar_ir}%
+    Polialcoholes                     #{@polialco} g       -
+    Almidones                         #{@almidon} g       -
+    
+    Fibra alimentaria                 #{@fibra} g       -
+    
+    Proteinas                       #{@proteina} g   #{proteina_ir}%
+    
+    Sal                             #{@sal} g   #{sal_ir}%"
     end
   end
 #end
