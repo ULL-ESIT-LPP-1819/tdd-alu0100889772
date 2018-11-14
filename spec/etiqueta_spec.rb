@@ -30,6 +30,33 @@ RSpec.describe Etiqueta do
   end
   
   it "calcula IR" do
-    expect((Etiq.new("Queso",0.1,0.09,3.5,3.5,8,0.1)).nrg_kj_ir).to eq(2)
+    expect((Etiq.new("Queso",0.1,0.09,3.5,3.5,8,0.1)).nrg_kj_ir).to eq(2.4)
+  end
+  
+  it "muestra la etiqueta" do
+    expect((Etiq.new("Queso",0.1,0.09,3.5,3.5,8,0.1)).formato).yo eq("
+    Queso               Cada 100g o 100ml      IR
+    
+    Valor energético             201.7 kj    2.4%
+    (kj/kcal)                   47.5 kcal
+    
+    Grasas de las                   0.1 g   0.14%
+    cuales:
+    Saturadas                       0.1 g    0.5%
+    Monoinsaturadas                   0 g       -
+    Poliinsaturadas                   0 g       -
+    
+    Hidratos de                     3.5 g   1.34% 
+    carbono de los
+    cuales:
+    Azucares                        3.5 g   3.89%
+    Polialcoholes                     0 g       -
+    Almidones                         0 g       -
+    
+    Fibra alimentaria                 0 g       -
+    
+    Proteinas                         8 g     16%
+    
+    Sal                             0.1 g   1.67%")
   end
 end
