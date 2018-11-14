@@ -26,7 +26,11 @@ RSpec.describe Etiqueta do
   end
   
   it "calcula calorias" do
-    expect((Etiq.new("Queso",0.1,0.09,3.5,3.5,8,0.1)).nrg_kj).to eq(50.3)
+    expect((Etiq.new("Queso",0.1,0.09,3.5,3.5,8,0.1)).nrg_cal).to eq(47.5)
+  end
+  
+  it "calcula IR" do
+    expect((Etiq.new("Queso",0.1,0.09,3.5,3.5,8,0.1)).nrg_kj_ir).to eq(2)
   end
   
 end

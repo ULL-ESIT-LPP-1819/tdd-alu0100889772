@@ -18,7 +18,11 @@ require "etiqueta/version"
     end
     
     def nrg_cal
-        
+        (@grasa*9)+(@hidrato*4)+(@proteina*4)+(@sal*6)+(@monoinsat*9)+(@poliinsat*9)+(@polialco*2.4)+(@almidon*4)+(@fibra*2)
+    end
+    
+    def nrg_kj_ir
+        (nrg_kj/8400).round(2)*100
     end
   end
 #end
