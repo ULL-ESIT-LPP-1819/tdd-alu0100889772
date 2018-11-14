@@ -63,4 +63,9 @@ RSpec.describe Etiqueta do
     
     Sal                             0.1 g   1.66%")
   end
+  
+  it "crea una lista" do
+    Lista.new()
+  end
+  
 end

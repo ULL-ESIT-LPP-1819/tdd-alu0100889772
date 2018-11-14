@@ -81,3 +81,11 @@ require "etiqueta/version"
     end
   end
 #end
+
+class Lista
+    attr_reader :head, :tail
+    Node = Struct.new(:value, :next, :prev)
+    def initialize
+        @head, @tail = nil, nil
+    end
+end
