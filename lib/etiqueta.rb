@@ -1,7 +1,7 @@
 require "etiqueta/version"
 
 #module Etiqueta
-  class Etiqueta
+  class Etiq
 
     attr_reader :nombre, :grasa, :saturada, :hidrato, :azucar, :proteina, :sal, :monoinsat, :poliinsat, :polialco, :almidon, :fibra
     
