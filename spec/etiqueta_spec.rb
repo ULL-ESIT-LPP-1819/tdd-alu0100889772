@@ -77,4 +77,11 @@ RSpec.describe Etiqueta do
     list.push_tail(2)
     expect(list.to_s).to eq("3 2")
   end
+  
+  it "elimina un nodo" do
+    list = (Lista.new(3))
+    list.push_tail(2)
+    list.pop_head
+    expect(list.to_s).to eq("2")
+  end
 end
