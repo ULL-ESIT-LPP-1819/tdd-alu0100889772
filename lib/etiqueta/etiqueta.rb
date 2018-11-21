@@ -228,3 +228,11 @@ class Antropometria
         
 end
 
+class Individuo < Antropometria
+    attr_reader :paciente
+    def initialize(paciente,peso=0.0,talla=0.0,edad=0,sexo=0,cintura=0.0,cadera=0.0)
+        super(peso,talla,edad,sexo,cintura,cadera)
+        @paciente = paciente
+    end
+        
+end
