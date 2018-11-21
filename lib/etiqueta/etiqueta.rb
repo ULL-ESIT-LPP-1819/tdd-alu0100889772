@@ -241,5 +241,15 @@ class Individuo < Antropometria
            true
         end
     end
+    
+    def obeso
+        if(!paciente)
+            false
+        elsif((analisis_imc=="Obesidad grado 1(obesidad)")||(analisis_imc=="Obesidad grado 2(obesidad)")||(analisis_imc=="Obesidad grado 3(obesidad)"))
+            true
+        else
+            false
+        end
+    end
         
 end
