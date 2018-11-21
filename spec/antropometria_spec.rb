@@ -15,7 +15,11 @@ RSpec.describe Etiqueta do
     end
     
     it "calcula el porcentaje de grasa" do
-        expect(@mujer1.grasa).to eq(29.58)
+        expect(@datos.grasa).to eq(29.58)
+    end
+    
+    it "calcula el rcc" do
+        expect(@datos.rcc).to eq(0.84)
     end
     
 end

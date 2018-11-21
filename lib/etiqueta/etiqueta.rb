@@ -189,5 +189,11 @@ class Antropometria
             (@peso/(@talla*@talla)).round(1)
         end
     end
+    
+    def grasa
+        if((sexo==0)||(sexo==1))
+            (1.2*imc+0.23*@edad-10.8*sexo-5.4).round(2)
+        end
+    end
 end
 
