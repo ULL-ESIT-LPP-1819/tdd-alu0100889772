@@ -1,6 +1,11 @@
 require "spec_helper"
 
 RSpec.describe Etiqueta do
+  
+  before :each do
+    @lista = Node.new(nil,nil,nil)
+  end
+  
   it "has a version number" do
     expect(Etiqueta::VERSION).not_to be nil
   end
@@ -65,29 +70,30 @@ RSpec.describe Etiqueta do
   end
   
   it "crea una lista" do
-    Lista.new(2)
+    a = Node.new()
   end
   
   it "pushea un nodo" do
-    Lista.new(3).push_tail(2)
+    @lista.push_tail(2)
   end
   
   it "muestra lista" do
-    list = (Lista.new(3))
-    list.push_tail(2)
-    expect(list.to_s).to eq("3 2")
+    
+    @lista.push_tail(2)
+    @lista.push_tail(3)
+    expect(@lista.to_s).to eq("2 3")
   end
   
   it "elimina un nodo" do
-    list = (Lista.new(3))
-    list.push_tail(2)
-    list.pop_head
-    expect(list.to_s).to eq("2")
+    @lista.push_tail(2)
+    @lista.pop_tail
+    expect(@lista.empty).to eq(true)
   end
   
   it "almacena etiquetas" do
-    list = (Lista.new(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1)))
-    expect(list.head.value.formato).to eq("
+    list = (Node.new(nil,nil,nil))
+    list.push_head(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1))
+    expect(list.get_head.value.formato).to eq("
     Queso               Cada 100g o 100ml      IR
     
     Valor energético             201.7 kj    2.4%
