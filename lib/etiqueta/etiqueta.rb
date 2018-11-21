@@ -195,5 +195,11 @@ class Antropometria
             (1.2*imc+0.23*@edad-10.8*sexo-5.4).round(2)
         end
     end
+    
+    def rcc
+        if(@cadera!=0.0)
+            (@cintura/@cadera).round(2)
+        end
+    end
 end
 
