@@ -217,5 +217,14 @@ class Antropometria
             "Obesidad grado 3(obesidad)"
         end
     end
+    
+    def imc_empty
+        if(imc!=0.0)
+            false
+        else
+            true
+        end
+    end
+        
 end
 

@@ -26,4 +26,12 @@ RSpec.describe Etiqueta do
         expect(@datos.analisis_imc).to eq("Adecuado(aceptable)")
     end
     
+    it "comprueba si se calcula imc" do
+        expect(@datos.imc_empty).to eq(false)
+    end
+    
+    it "crea objeto Individuo" do
+        expect((Individuo.new(70.0,1.80,25,1,94.0,108.0)).class).to eq(Antropometria)
+    end
+    
 end
