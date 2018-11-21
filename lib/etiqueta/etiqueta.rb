@@ -183,4 +183,11 @@ class Antropometria
     def initialize(peso,talla,edad,sexo,cintura,cadera)
         @peso, @talla, @edad, @sexo, @cintura, @cadera = peso, talla, edad, sexo, cintura, cadera
     end
+    
+    def imc
+        if(@talla!=0.0)
+            (@peso/(@talla*@talla)).round(1)
+        end
+    end
 end
+
