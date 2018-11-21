@@ -40,4 +40,13 @@ RSpec.describe Etiqueta do
         expect(@persona2.obeso).to eq(true)
     end
     
+    it "comprobación tipo de objeto" do
+        expect((Individuo.new).is_a?(Antropometria)).to eq(true)
+        expect((Individuo.new).is_a?(Individuo)).to eq(true)
+    end
+    
+    it "comprobación jerarquía" do
+        expect(Individuo.ancestors).to eq([Individuo, Antropometria, Object, Kernel, BasicObject])
+    end
+    
 end

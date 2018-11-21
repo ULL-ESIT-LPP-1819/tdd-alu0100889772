@@ -232,9 +232,6 @@ class Individuo < Antropometria
     end
     
     def paciente
-        puts imc
-        puts rcc
-        puts grasa
         if((imc==0.0)&&(rcc==0.0)&&(grasa==0.0))
            false
         else
