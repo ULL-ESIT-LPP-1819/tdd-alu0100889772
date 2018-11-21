@@ -187,18 +187,24 @@ class Antropometria
     def imc
         if(@talla!=0.0)
             (@peso/(@talla*@talla)).round(1)
+        else
+            0.0
         end
     end
     
     def grasa
         if((sexo==0)||(sexo==1))
             (1.2*imc+0.23*@edad-10.8*sexo-5.4).round(2)
+        else
+            0.0
         end
     end
     
     def rcc
         if(@cadera!=0.0)
             (@cintura/@cadera).round(2)
+        else
+            0.0
         end
     end
     
@@ -217,22 +223,23 @@ class Antropometria
             "Obesidad grado 3(obesidad)"
         end
     end
-    
-    def imc_empty
-        if(imc!=0.0)
-            false
-        else
-            true
-        end
-    end
         
 end
 
 class Individuo < Antropometria
-    attr_reader :paciente
-    def initialize(paciente,peso=0.0,talla=0.0,edad=0,sexo=0,cintura=0.0,cadera=0.0)
-        super(peso,talla,edad,sexo,cintura,cadera)
-        @paciente = paciente
+    def initialize(peso=0.0,talla=0.0,edad=0,sexo=2,cintura=0.0,cadera=0.0)
+        super
+    end
+    
+    def paciente
+        puts imc
+        puts rcc
+        puts grasa
+        if((imc==0.0)&&(rcc==0.0)&&(grasa==0.0))
+           false
+        else
+           true
+        end
     end
         
 end

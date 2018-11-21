@@ -4,6 +4,7 @@ RSpec.describe Etiqueta do
     
     before :each do
         @datos = Antropometria.new(60.0,1.60,30,0,72.0,86.0)
+        @persona1 = Individuo.new
     end
     
     it "crea objeto Antropometría" do
@@ -26,12 +27,12 @@ RSpec.describe Etiqueta do
         expect(@datos.analisis_imc).to eq("Adecuado(aceptable)")
     end
     
-    it "comprueba si se calcula imc" do
-        expect(@datos.imc_empty).to eq(false)
+    it "crea objeto Individuo" do
+        expect((Individuo.new).class).to eq(Individuo)
     end
     
-    it "crea objeto Individuo" do
-        expect((Individuo.new(true)).class).to eq(Individuo)
+    it "sabe si es paciente o no" do
+        expect(@persona1.paciente).to eq(false)
     end
     
 end
