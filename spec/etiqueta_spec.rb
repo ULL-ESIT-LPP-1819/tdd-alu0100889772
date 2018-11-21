@@ -85,7 +85,6 @@ RSpec.describe Etiqueta do
   end
   
   it "muestra lista" do
-    
     @lista.push_tail(3)
     @lista.push_tail(2)
     @lista.push_tail(1)
@@ -95,17 +94,15 @@ RSpec.describe Etiqueta do
   end
   
   it "elimina un nodo" do
-    @lista.pop_tail
-    @lista.pop_tail
-    @lista.pop_tail
-    @lista.pop_tail
+    @lista.push_tail(2)
     @lista.pop_tail
     expect(@lista.empty).to eq(true)
   end
   
   it "almacena etiquetas" do
-    @lista.push_tail(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1))
-    expect(@lista.get_head.value.formato).to eq("
+    list = (Node.new(nil,nil,nil))
+    list.push_head(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1))
+    expect(list.get_head.value.formato).to eq("
     Queso               Cada 100g o 100ml      IR
     
     Valor energético             201.7 kj    2.4%

@@ -166,14 +166,87 @@ Node = Struct.new(:value, :next, :prev) do
     def pop_tail
         elim_nodo = self.get_tail
         if(empty)
-        elsif(self.get_head==self.get_tail)
+        elsif(self.get_head!=self.get_tail)
             self.get_tail = elim_nodo.prev
             self.get_tail.next = nil
-        elsif(self.get_head!=self.get_tail)
+        elsif(self.get_head==self.get_tail)
             self.value=nil
             self.prev=nil
             self.next=nil
         end
     end
     
+end
+
+class Antropometria
+    attr_reader :peso, :talla, :edad, :sexo, :cintura, :cadera
+    def initialize(peso,talla,edad,sexo,cintura,cadera)
+        @peso, @talla, @edad, @sexo, @cintura, @cadera = peso, talla, edad, sexo, cintura, cadera
+    end
+    
+    def imc
+        if(@talla!=0.0)
+            (@peso/(@talla*@talla)).round(1)
+        else
+            0.0
+        end
+    end
+    
+    def grasa
+        if((sexo==0)||(sexo==1))
+            (1.2*imc+0.23*@edad-10.8*sexo-5.4).round(2)
+        else
+            0.0
+        end
+    end
+    
+    def rcc
+        if(@cadera!=0.0)
+            (@cintura/@cadera).round(2)
+        else
+            0.0
+        end
+    end
+    
+    def analisis_imc
+        if(imc<18.5)
+            "Bajo peso(delgado)"
+        elsif(imc<24.9)
+            "Adecuado(aceptable)"
+        elsif(imc<29.9)
+            "Sobrepeso"
+        elsif(imc<34.9)
+            "Obesidad grado 1(obesidad)"
+        elsif(imc<39.9)
+            "Obesidad grado 2(obesidad)"
+        elsif(imc>39.9)
+            "Obesidad grado 3(obesidad)"
+        end
+    end
+        
+end
+
+class Individuo < Antropometria
+    def initialize(peso=0.0,talla=0.0,edad=0,sexo=2,cintura=0.0,cadera=0.0)
+        super
+    end
+    
+    def paciente
+        if((imc==0.0)&&(rcc==0.0)&&(grasa==0.0))
+           false
+        else
+           true
+        end
+    end
+    
+    def obeso
+        if(!paciente)
+            false
+        elsif((analisis_imc=="Obesidad grado 1(obesidad)")||(analisis_imc=="Obesidad grado 2(obesidad)")||(analisis_imc=="Obesidad grado 3(obesidad)"))
+            true
+        else
+            false
+        end
+    end
+        
 end
