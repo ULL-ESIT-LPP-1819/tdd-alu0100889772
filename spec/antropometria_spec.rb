@@ -31,7 +31,7 @@ RSpec.describe Etiqueta do
     end
     
     it "crea objeto Individuo" do
-        expect((Individuo.new(70.0,1.80,25,1,94.0,108.0)).class).to eq(Antropometria)
+        expect((Individuo.new(true)).class).to eq(Individuo)
     end
     
 end
