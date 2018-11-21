@@ -22,4 +22,8 @@ RSpec.describe Etiqueta do
         expect(@datos.rcc).to eq(0.84)
     end
     
+    it "analiza el imc" do
+        expect(@datos.analisis_imc).to eq("Adecuado(aceptable)")
+    end
+    
 end

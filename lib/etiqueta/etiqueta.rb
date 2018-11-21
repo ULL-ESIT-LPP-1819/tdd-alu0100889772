@@ -201,5 +201,21 @@ class Antropometria
             (@cintura/@cadera).round(2)
         end
     end
+    
+    def analisis_imc
+        if(imc<18.5)
+            "Bajo peso(delgado)"
+        elsif(imc<24.9)
+            "Adecuado(aceptable)"
+        elsif(imc<29.9)
+            "Sobrepeso"
+        elsif(imc<34.9)
+            "Obesidad grado 1(obesidad)"
+        elsif(imc<39.9)
+            "Obesidad grado 2(obesidad)"
+        elsif(imc>39.9)
+            "Obesidad grado 3(obesidad)"
+        end
+    end
 end
 
