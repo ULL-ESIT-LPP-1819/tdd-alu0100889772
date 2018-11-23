@@ -6,6 +6,15 @@ RSpec.describe Etiqueta do
         @datos = Antropometria.new(60.0,1.60,30,0,72.0,86.0)
         @persona1 = Individuo.new
         @persona2 = Individuo.new(90.0,1.70,55,0,100.0,115.0)
+        @persona3 = Individuo.new(78.0,1.70,55,1,100.0,115.0)
+        @persona4 = Individuo.new(60.0,1.30,55,0,100.0,115.0)
+        @persona5 = Individuo.new(90.0,1.60,55,1,100.0,115.0)
+        @list = Node.new
+        @list.push_tail(@persona1)
+        @list.push_tail(@persona2)
+        @list.push_tail(@persona3)
+        @list.push_tail(@persona4)
+        @list.push_tail(@persona5)
     end
 
     it "crea objeto Antropometría" do
