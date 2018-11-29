@@ -4,6 +4,9 @@ RSpec.describe Etiqueta do
   
   before :each do
     @lista = Node.new(nil,nil,nil)
+    @etiq1 = Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1)
+    @etiq2 = Etiq.new("Spaghetti",1.2,0.2,57.6,2.6,9.2,0.01)
+    @etiq3 = Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1)
   end
   
   it "has a version number" do
@@ -126,6 +129,12 @@ RSpec.describe Etiqueta do
     Proteinas                       8.0 g   16.0%
     
     Sal                             0.1 g   1.66%")
+  end
+
+  it "compara dos etiquetas ==" do
+    expect(@etiq1 == @etiq1).to eq(true)
+    expect(@etiq1 == @etiq3).to eq(true)
+    expect(@etiq1 == @etiq2).to eq(false)
   end
 
 end
