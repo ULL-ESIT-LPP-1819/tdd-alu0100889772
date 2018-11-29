@@ -16,6 +16,7 @@ RSpec.describe Etiqueta do
         @list.push_tail(@persona4)
         @list.push_tail(@persona5)
     end
+    
 
     it "crea objeto Antropometría" do
         expect((Antropometria.new(70.0,1.80,25,1,94.0,108.0)).class).to eq(Antropometria)
