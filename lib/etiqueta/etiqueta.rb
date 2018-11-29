@@ -79,6 +79,13 @@ class Etiq
     
     Sal                             #{@sal} g   #{sal_ir}%"
     end
+    
+    def ==(etiqueta)
+        if(@nombre == etiqueta.nombre && @grasa == etiqueta.grasa && @saturada == etiqueta.saturada && @hidrato == etiqueta.hidrato && @azucar == etiqueta.azucar && @proteina == etiqueta.proteina && @sal == etiqueta.sal && @monoinsat == etiqueta.monoinsat && @poliinsat == etiqueta.poliinsat && @polialco == etiqueta.polialco && @almidon == etiqueta.almidon && @fibra == etiqueta.fibra)
+            return true
+        end
+        false
+    end
 end
 
 
