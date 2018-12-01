@@ -138,6 +138,7 @@ RSpec.describe Etiqueta do
   end
   
   it "compara dos etiquetas" do
+    
     expect(@etiq1).to eq(@etiq1)
     expect(@etiq1).to eq(@etiq3)
     

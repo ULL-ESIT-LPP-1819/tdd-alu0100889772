@@ -185,6 +185,9 @@ Node = Struct.new(:value, :next, :prev) do
 end
 
 class Antropometria
+    
+    include Comparable
+    
     attr_reader :peso, :talla, :edad, :sexo, :cintura, :cadera
     def initialize(peso,talla,edad,sexo,cintura,cadera)
         @peso, @talla, @edad, @sexo, @cintura, @cadera = peso, talla, edad, sexo, cintura, cadera
@@ -229,10 +232,18 @@ class Antropometria
             "Obesidad grado 3(obesidad)"
         end
     end
+    
+    def <=>(other)
+        return nil unless other.instance_of? Antropometria
+        self.imc <=> other.imc
+    end
         
 end
 
 class Individuo < Antropometria
+    
+    #include Comparable
+    
     def initialize(peso=0.0,talla=0.0,edad=0,sexo=2,cintura=0.0,cadera=0.0)
         super
     end
@@ -253,6 +264,11 @@ class Individuo < Antropometria
         else
             false
         end
+    end
+    
+    def <=>(other)
+        return nil unless other.instance_of? Individuo
+        self.imc <=> other.imc
     end
         
 end

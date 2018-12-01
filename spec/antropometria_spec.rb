@@ -4,6 +4,7 @@ RSpec.describe Etiqueta do
 
     before :each do
         @datos = Antropometria.new(60.0,1.60,30,0,72.0,86.0)
+        @datos2 = Antropometria.new(90.0,1.70,55,0,100.0,115.0)
         @persona1 = Individuo.new
         @persona2 = Individuo.new(90.0,1.70,55,0,100.0,115.0)
         @persona3 = Individuo.new(78.0,1.70,55,1,100.0,115.0)
@@ -56,24 +57,26 @@ RSpec.describe Etiqueta do
     end
     
     it "comprobación jerarquía" do
-        expect(Individuo.ancestors).to eq([Individuo, Antropometria, Object, Kernel, BasicObject])
+        expect(Individuo.ancestors).to eq([Individuo, Antropometria, Comparable, Object, Kernel, BasicObject])
     end
     
     it "compara dos individuos" do
+    expect(@datos).to be < @datos2
+        
     expect(@persona2).to eq(@persona2)
     expect(@persona2).to eq(@persona2)
     
-    expect(@persona3).to be < @persona2
+    expect(@persona3 < @persona2).to eq(true)
     
-    expect(@persona2).to be > @persona3
+    expect(@persona2 > @persona3).to be(true)
     
-    expect(@persona3).to be <= @persona2
-    expect(@persona4).to be <= @persona4
-    expect(@persona5).to be <= @persona4
+    expect(@persona3 <= @persona2).to be(true)
+    expect(@persona4 <= @persona4).to be(true)
+    expect(@persona5 <= @persona4).to be(true)
     
-    expect(@persona4).to be >= @persona5
-    expect(@persona5).to be >= @persona5
-    expect(@persona2).to be >= @persona3
+    expect(@persona4 >= @persona5).to be(true)
+    expect(@persona5 >= @persona5).to be(true)
+    expect(@persona2 >= @persona3).to be(true)
   end
 
 end
