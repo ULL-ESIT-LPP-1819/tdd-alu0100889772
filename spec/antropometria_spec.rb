@@ -58,5 +58,22 @@ RSpec.describe Etiqueta do
     it "comprobación jerarquía" do
         expect(Individuo.ancestors).to eq([Individuo, Antropometria, Object, Kernel, BasicObject])
     end
+    
+    it "compara dos individuos" do
+    expect(@persona2).to eq(@persona2)
+    expect(@persona2).to eq(@persona2)
+    
+    expect(@persona3).to be < @persona2
+    
+    expect(@persona2).to be > @persona3
+    
+    expect(@persona3).to be <= @persona2
+    expect(@persona4).to be <= @persona4
+    expect(@persona5).to be <= @persona4
+    
+    expect(@persona4).to be >= @persona5
+    expect(@persona5).to be >= @persona5
+    expect(@persona2).to be >= @persona3
+  end
 
 end
