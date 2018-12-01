@@ -136,5 +136,22 @@ RSpec.describe Etiqueta do
     expect(@etiq1 == @etiq3).to eq(true)
     expect(@etiq1 == @etiq2).to eq(false)
   end
+  
+  it "compara dos etiquetas" do
+    expect(@etiq1).to eq(@etiq1)
+    expect(@etiq1).to eq(@etiq3)
+    
+    expect(@etiq1).to be < @etiq2
+    
+    expect(@etiq2).to be > @etiq1
+    
+    expect(@etiq1).to be <= @etiq1
+    expect(@etiq1).to be <= @etiq3
+    expect(@etiq1).to be <= @etiq2
+    
+    expect(@etiq1).to be >= @etiq1
+    expect(@etiq1).to be >= @etiq3
+    expect(@etiq2).to be >= @etiq1
+  end
 
 end
