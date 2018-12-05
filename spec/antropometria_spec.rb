@@ -61,22 +61,22 @@ RSpec.describe Etiqueta do
     end
     
     it "compara dos individuos" do
-    expect(@datos).to be < @datos2
+        expect(@datos).to be < @datos2
+            
+        expect(@persona2).to eq(@persona2)
+        expect(@persona2).to eq(@persona2)
         
-    expect(@persona2).to eq(@persona2)
-    expect(@persona2).to eq(@persona2)
-    
-    expect(@persona3 < @persona2).to eq(true)
-    
-    expect(@persona2 > @persona3).to be(true)
-    
-    expect(@persona3 <= @persona2).to be(true)
-    expect(@persona4 <= @persona4).to be(true)
-    expect(@persona5 <= @persona4).to be(true)
-    
-    expect(@persona4 >= @persona5).to be(true)
-    expect(@persona5 >= @persona5).to be(true)
-    expect(@persona2 >= @persona3).to be(true)
-  end
+        expect(@persona3 < @persona2).to eq(true)
+        
+        expect(@persona2 > @persona3).to be(true)
+        
+        expect(@persona3 <= @persona2).to be(true)
+        expect(@persona4 <= @persona4).to be(true)
+        expect(@persona5 <= @persona4).to be(true)
+        
+        expect(@persona4 >= @persona5).to be(true)
+        expect(@persona5 >= @persona5).to be(true)
+        expect(@persona2 >= @persona3).to be(true)
+      end
 
 end
