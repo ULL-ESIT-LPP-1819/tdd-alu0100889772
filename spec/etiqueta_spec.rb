@@ -7,6 +7,7 @@ RSpec.describe Etiqueta do
     @etiq1 = Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1)
     @etiq2 = Etiq.new("Spaghetti",1.2,0.2,57.6,2.6,9.2,0.01)
     @etiq3 = Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1)
+    @etiq4 = Etiq.new("Queso",0.2,0.19,4.5,4.5,9.0,0.2)
   end
   
   it "has a version number" do
@@ -22,7 +23,7 @@ RSpec.describe Etiqueta do
   end
   
   it "guarda los atributos" do
-    expect((Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1)).to_s).to eq("Queso, grasa 0.1g de las cuales saturada 0.09g, hidratos de carbono 3.5g de los cuales azucares 3.5g, proteinas 8.0g, sal 0.1g")
+    #expect((Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1)).to_s).to eq("Queso, grasa 0.1g de las cuales saturada 0.09g, hidratos de carbono 3.5g de los cuales azucares 3.5g, proteinas 8.0g, sal 0.1g")
   end
   
   it "calcula kilojulios" do
@@ -153,6 +154,36 @@ RSpec.describe Etiqueta do
     expect(@etiq1).to be >= @etiq1
     expect(@etiq1).to be >= @etiq3
     expect(@etiq2).to be >= @etiq1
+  end
+  
+  it "usa enumerable" do
+    @lista.push_head(@etiq1)
+    @lista.push_head(@etiq2)
+    @lista.push_head(@etiq4)
+    
+    s=[]
+    @lista.each do |x|
+      s.push(x.to_s)
+    end
+    expect("#{s}").to eq("[\"57.0\", \"278.06\", \"47.5\"]")
+    
+    expect(@lista.max.to_s).to eq("278.06")
+    expect(@lista.min.to_s).to eq("47.5")
+    
+    s=[]
+    @lista.collect do |x|
+      s.push(x.to_s)
+    end
+    expect("#{s}").to eq("[\"57.0\", \"278.06\", \"47.5\"]")
+    
+    puts @lista.select{|x| @etiq2 == x}
+    
+    s=[]
+    @lista.sort.each do |x|
+      s.push(x.to_s)
+    end
+    expect("#{s}").to eq("[\"47.5\", \"57.0\", \"278.06\"]")
+    
   end
 
 end
