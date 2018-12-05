@@ -9,12 +9,25 @@ class Etiq
     attr_reader :nombre, :grasa, :saturada, :hidrato, :azucar, :proteina, :sal, :monoinsat, :poliinsat, :polialco, :almidon, :fibra
     
     # Calcula el valor energético en kilojulios
-    # @param 
+    # @param nombre [String] nombre de la etiqueta
+    # @param grasa [Int] cantidad de grasa en gr
+    # @param saturada [Int] de la cantidad de grasa cuánta es saturada en gr
+    # @param hidrato [Int] cantidad de hidratos de carbono en gr
+    # @param azucar [Int] de la cantidad de hidratos de carbono cuánto es azúcar en gr
+    # @param proteina [Int] cantidad de proteínas en gr
+    # @param sal [Int] cantidad de sal en gr
+    # @param monoinsat [Int] cantidad de grasas monoinsaturadas en gr
+    # @param poliinsat [Int] cantidad de grasas poliinsaturadas en gr
+    # @param polialco [Int] cantidad de polialcohol en gr
+    # @param almidon [Int] cantidad de almidon en gr
+    # @param fibra [Int] cantidad de fibra en gr
     # @return [Float] the result in kj
     def initialize(nombre, grasa, saturada, hidrato, azucar, proteina, sal, monoinsat=0, poliinsat=0, polialco=0, almidon=0, fibra=0)
         @nombre, @grasa, @saturada, @hidrato, @azucar, @proteina, @sal, @monoinsat, @poliinsat, @polialco, @almidon, @fibra = nombre, grasa, saturada, hidrato, azucar, proteina, sal, monoinsat, poliinsat, polialco, almidon, fibra
     end
     
+    # Método to_s de la clase
+    # @return [String] valor energético en kilojulios en forma de string
     def to_s
         "#{nrg_cal}"
         #"#{@nombre}, grasa #{@grasa}g de las cuales saturada #{@saturada}g, hidratos de carbono #{@hidrato}g de los cuales azucares #{@azucar}g, proteinas #{@proteina}g, sal #{@sal}g"
@@ -134,6 +147,8 @@ Node = Struct.new(:value, :next, :prev) do
     
     attr_reader :head, :tail
     
+    # Método to_s del struct
+    # @return [String] to_s de cada valor de los nodos de la lista
     def to_s
         nodo = self.get_head
         chain = ""
@@ -152,6 +167,8 @@ Node = Struct.new(:value, :next, :prev) do
         chain[0,chain.size-1]
     end
     
+    # Método get_head del struct
+    # @return [Node] devuelve el nodo que está a la CABEZA de la lista
     def get_head
         if(self.prev==nil)
             self
@@ -160,6 +177,8 @@ Node = Struct.new(:value, :next, :prev) do
         end
     end
     
+    # Método get_tail del struct
+    # @return [Node] devuelve el nodo que está a la COLA de la lista
     def get_tail
         if(self.next==nil)
             self
@@ -168,6 +187,8 @@ Node = Struct.new(:value, :next, :prev) do
         end
     end
     
+    # Método empty del struct
+    # @return [Bool] devuelve true si la lista está vacia o false si la lista tiene algún elemento
     def empty
         if(self.value==nil)
             true
@@ -176,6 +197,8 @@ Node = Struct.new(:value, :next, :prev) do
         end
     end
     
+    # Método push_tail del struct
+    # @param value [Object] introduce el onjeto en la lista por la COLA
     def push_tail(value)
         nuevo_nodo = Node.new(value, nil, self.get_tail)
         if(empty)
@@ -187,6 +210,8 @@ Node = Struct.new(:value, :next, :prev) do
         end
     end
     
+    # Método push_head del struct
+    # @param value [Object] introduce el onjeto en la lista por la CABEZA
     def push_head(value)
         nuevo_nodo = Node.new(value, self.get_head, nil)
         if(empty)
@@ -198,6 +223,7 @@ Node = Struct.new(:value, :next, :prev) do
         end
     end
     
+    # Método pop_head del struct que quita el objeto que esté en la CABEZA de la lista
     def pop_head
         elim_nodo = self.get_head
         if(empty)
@@ -211,6 +237,7 @@ Node = Struct.new(:value, :next, :prev) do
         end
     end
     
+    # Método pop_head del struct que quita el objeto que esté en la COLA de la lista
     def pop_tail
         elim_nodo = self.get_tail
         if(empty)
@@ -224,6 +251,7 @@ Node = Struct.new(:value, :next, :prev) do
         end
     end
     
+    # Método each para que funcionen los métodos del módulo Enumerable
     def each
         nodo = get_head
         while nodo != nil
@@ -239,15 +267,26 @@ class Antropometria
     
     include Comparable
     
+    # Calculps antropométricos 
+    # @param peso [Float] peso en kilogramos
+    # @param talla [Float] altura en metros
+    # @param edad [Int] edad de la persona
+    # @param sexo [Int] valor 0 para chica y 1 para chico
+    # @param cintura [Float] medida de la cintura en centímetros
+    # @param cadera [Float] medida de la cadera en centímetros
     attr_reader :peso, :talla, :edad, :sexo, :cintura, :cadera
     def initialize(peso,talla,edad,sexo,cintura,cadera)
         @peso, @talla, @edad, @sexo, @cintura, @cadera = peso, talla, edad, sexo, cintura, cadera
     end
     
+    # Método to_s de la clase
+    # @return [String] to_s del valor imc
     def to_s
         "#{imc}"
     end
     
+    # Método que realiza el cálculo del imc
+    # @return [Float] devuelve el valor imc
     def imc
         if(@talla!=0.0)
             (@peso/(@talla*@talla)).round(1)
@@ -256,6 +295,8 @@ class Antropometria
         end
     end
     
+    # Método que realiza el cálculo del porcentaje de grasa
+    # @return [Float] devuelve el valor grasa
     def grasa
         if((sexo==0)||(sexo==1))
             (1.2*imc+0.23*@edad-10.8*sexo-5.4).round(2)
@@ -264,6 +305,8 @@ class Antropometria
         end
     end
     
+    # Método que realiza el cálculo de la relación cintura - cadera
+    # @return [Float] devuelve el rcc
     def rcc
         if(@cadera!=0.0)
             (@cintura/@cadera).round(2)
@@ -272,6 +315,8 @@ class Antropometria
         end
     end
     
+    # Método que devuelve que significado tiene el imc
+    # @return [String] devuelve en forma de cadena que significa el imc calculado
     def analisis_imc
         if(imc<18.5)
             "Bajo peso(delgado)"
@@ -288,6 +333,8 @@ class Antropometria
         end
     end
     
+    # Método que compara dos valores antropométricos según los imc
+    # @return [Int] -1 0 1
     def <=>(other)
         return nil unless other.instance_of? Antropometria
         self.imc <=> other.imc
@@ -298,16 +345,25 @@ end
 # @author Alberto Delgado Soler
 class Individuo < Antropometria
     
-    #include Comparable
-    
+    # Calculos antropométricos de un individuo en concreto que hereda métodos de la clase Antropometría
+    # @param peso [Float] peso en kilogramos
+    # @param talla [Float] altura en metros
+    # @param edad [Int] edad de la persona
+    # @param sexo [Int] valor 0 para chica y 1 para chico
+    # @param cintura [Float] medida de la cintura en centímetros
+    # @param cadera [Float] medida de la cadera en centímetros
     def initialize(peso=0.0,talla=0.0,edad=0,sexo=2,cintura=0.0,cadera=0.0)
         super
     end
     
+    # Método to_s de la clase
+    # @return [String] to_s del valor imc
     def to_s
         "#{imc}"
     end
     
+    # Método que dice si es paciente o no
+    # @return [Bool] true si es paciente false si no lo es
     def paciente
         if((imc==0.0)&&(rcc==0.0)&&(grasa==0.0))
            false
@@ -316,6 +372,8 @@ class Individuo < Antropometria
         end
     end
     
+    # Método que dice si es obeso o no
+    # @return [Bool] true si es obeso false si no es obeso o no es paciente
     def obeso
         if(!paciente)
             false
@@ -326,6 +384,8 @@ class Individuo < Antropometria
         end
     end
     
+    # Método que compara dos valores antropométricos según los imc
+    # @return [Int] -1 0 1
     def <=>(other)
         return nil unless other.instance_of? Individuo
         self.imc <=> other.imc
