@@ -77,6 +77,35 @@ RSpec.describe Etiqueta do
         expect(@persona4 >= @persona5).to be(true)
         expect(@persona5 >= @persona5).to be(true)
         expect(@persona2 >= @persona3).to be(true)
-      end
+    end
+    
+    it "saca peso teórico ideal" do
+        expect(@persona2.peso_teo_ideal).to eq(65.0)
+    end
+    
+    it "saca gasto energético basal" do
+        #mujer
+        expect(@persona2.gast_nrg_basal).to eq(474.625)
+        #hombre
+        expect(@persona3.gast_nrg_basal).to eq(520.625)
+    end
+    
+    it "saca efecto termogeno" do
+        expect(@persona3.efect_term).to eq(52.0625)
+    end
+    
+    it "saca el gasto por actividad física" do
+        expect(@persona3.act_fisica(0)).to eq(0.0)
+        expect(@persona3.act_fisica(1)).to eq(62.474999999999994)
+        expect(@persona3.act_fisica(2)).to eq(140.56875000000002)
+        expect(@persona3.act_fisica(3)).to eq(281.13750000000005)
+    end
+    
+    it "saca el gasto energético total" do
+        expect(@persona3.gasto_nrg_global(0)).to eq(572.6875)
+        expect(@persona3.gasto_nrg_global(1)).to eq(635.1625)
+        expect(@persona3.gasto_nrg_global(2)).to eq(713.25625)
+        expect(@persona3.gasto_nrg_global(3)).to eq(853.825)
+    end
 
 end

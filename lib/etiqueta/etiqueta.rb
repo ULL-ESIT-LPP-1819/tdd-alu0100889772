@@ -390,5 +390,44 @@ class Individuo < Antropometria
         return nil unless other.instance_of? Individuo
         self.imc <=> other.imc
     end
+    
+    def peso_teo_ideal
+        (@talla*100 - 150) * 0.75 + 50
+    end
+    
+    def gast_nrg_basal
+        x=0
+        if(@sexo==0)
+            x=-161
+        else
+            x=5
+        end
+        (10 * @peso) + (6.25 * @talla) - (5 * @edad) + x
+    end
+    
+    def efect_term
+        gast_nrg_basal*0.1
+    end
+    
+    def act_fisica(nivel_act)
+        #0 Reposo 0,0
+        #1 Actividad ligera 0,12
+        #2 Actividad moderada 0,27
+        #3 Actividad intensa 0,54
+        if(nivel_act==0)
+            factor=0.0
+        elsif(nivel_act==1)
+            factor=0.12
+        elsif(nivel_act==2)
+            factor=0.27
+        elsif(nivel_act==3)
+            factor=0.54
+        end
+        gast_nrg_basal * factor
+    end
+    
+    def gasto_nrg_global(nivel_act)
+        gast_nrg_basal + efect_term + act_fisica(nivel_act)
+    end
         
 end
