@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/ULL-ESIT-LPP-1819/tdd-alu0100889772.svg?branch=master)
+
 # Etiqueta
 
 Etiqueta que lleva la información sobre el aporte energético (calórico) y contenido de nutrientes que aparece en los envases de los alimentos y bebidas
