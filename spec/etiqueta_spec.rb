@@ -162,18 +162,27 @@ RSpec.describe Etiqueta do
     @lista.push_head(@etiq4)
     
     s=[]
-    @lista.each { |x| s.push(x.to_s) }
-
+    @lista.each do |x|
+      s.push(x.to_s)
+    end
     expect("#{s}").to eq("[\"57.0\", \"278.06\", \"47.5\"]")
     
-    expect(@lista.max).to eq(@etiq2)
-    expect(@lista.min).to eq(@etiq1)
+    expect(@lista.max.to_s).to eq("278.06")
+    expect(@lista.min.to_s).to eq("47.5")
     
-    expect(@lista.collect { |x| x }).to eq([@etiq4, @etiq2, @etiq1])
+    s=[]
+    @lista.collect do |x|
+      s.push(x.to_s)
+    end
+    expect("#{s}").to eq("[\"57.0\", \"278.06\", \"47.5\"]")
     
-    expect(@lista.select{|x| "47.5" == x.to_s}).to eq([@etiq1])
+    puts @lista.select{|x| @etiq2 == x}
     
-    expect(@lista.sort).to eq([@etiq1, @etiq4, @etiq2])
+    s=[]
+    @lista.sort.each do |x|
+      s.push(x.to_s)
+    end
+    expect("#{s}").to eq("[\"47.5\", \"57.0\", \"278.06\"]")
     
   end
 
