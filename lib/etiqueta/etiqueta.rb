@@ -267,6 +267,8 @@ class Antropometria
     
     include Comparable
     
+    attr_reader :peso, :talla, :edad, :sexo, :cintura, :cadera
+    
     # Calculps antropométricos 
     # @param peso [Float] peso en kilogramos
     # @param talla [Float] altura en metros
@@ -274,7 +276,6 @@ class Antropometria
     # @param sexo [Int] valor 0 para chica y 1 para chico
     # @param cintura [Float] medida de la cintura en centímetros
     # @param cadera [Float] medida de la cadera en centímetros
-    attr_reader :peso, :talla, :edad, :sexo, :cintura, :cadera
     def initialize(peso,talla,edad,sexo,cintura,cadera)
         @peso, @talla, @edad, @sexo, @cintura, @cadera = peso, talla, edad, sexo, cintura, cadera
     end
@@ -391,10 +392,14 @@ class Individuo < Antropometria
         self.imc <=> other.imc
     end
     
+    # Método que calcula el peso teórico ideal del individuo
+    # @return [Float] peso teórico ideal
     def peso_teo_ideal
         (@talla*100 - 150) * 0.75 + 50
     end
     
+    # Método que calcula el gasto energético basal
+    # @return [Float] gasto energético ideal
     def gast_nrg_basal
         x=0
         if(@sexo==0)
@@ -405,15 +410,16 @@ class Individuo < Antropometria
         (10 * @peso) + (6.25 * @talla) - (5 * @edad) + x
     end
     
+    # Método que calcula el efecto termógeno de los alimentos
+    # @return [Float] efecto termógeno
     def efect_term
         gast_nrg_basal*0.1
     end
     
+    # Método que calcula el gasto por actividad física
+    # @param nivel_act [Int] nivel de la actividad realizada: 0 Reposo, 1 Actividad ligera, 2 Actividad moderada, 3 Actividad intensa
+    # @return [Float] gasto por actividad física
     def act_fisica(nivel_act)
-        #0 Reposo 0,0
-        #1 Actividad ligera 0,12
-        #2 Actividad moderada 0,27
-        #3 Actividad intensa 0,54
         if(nivel_act==0)
             factor=0.0
         elsif(nivel_act==1)
@@ -426,6 +432,9 @@ class Individuo < Antropometria
         gast_nrg_basal * factor
     end
     
+    # Método que calcula el gasto energético global
+    # @param nivel_act [Int] nivel de la actividad realizada: 0 Reposo, 1 Actividad ligera, 2 Actividad moderada, 3 Actividad intensa
+    # @return [Float] gasto energético global
     def gasto_nrg_global(nivel_act)
         gast_nrg_basal + efect_term + act_fisica(nivel_act)
     end
