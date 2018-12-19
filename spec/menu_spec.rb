@@ -1,4 +1,5 @@
 require "spec_helper"
+require 'benchmark'
 
 RSpec.describe Etiqueta do
   
@@ -99,10 +100,68 @@ RSpec.describe Etiqueta do
         @lista_menus.push_tail(@persona10)
     end
     
-    it "Se verifican los menus correctamente" do
+    it "los menús funcionan" do
     	expect(@array_menus.collect{|x| x.verificar}).to be == [true,false,true,false,false,true,false,true,false,true]
     end
-
     
+    Benchmark.bm do |x|
+    
+        it "ordena array con for" do
+            
+                
+            x.report("for array:"){
+                
+                array_copy = @array_menus.dup
+                array_resul = []
+                aux=0
+                for i in 0..@array_menus.size-1
+                    for j in 0..array_copy.size-1
+                        if array_copy[j].nrg_value < array_copy[aux].nrg_value
+                            aux=j
+                        end
+                    end
+                    array_resul.push(array_copy[aux])
+                    array_copy.delete_at(aux)
+                    aux=0
+                end
+                
+                expect(array_resul).to eq (@array_menus.sort{ |a, b| a.nrg_value <=> b.nrg_value})
+            }
+            
+        end
+        
+        it "ordena lista con for" do
+            
+            x.report("for lista:"){
+            
+            array_copy = @lista_menus.to_array
+            array_resul = []
+            aux=0
+            for i in 0..@array_menus.size-1
+                for j in 0..array_copy.size-1
+                    if array_copy[j].gasto_nrg_global(2) < array_copy[aux].gasto_nrg_global(2)
+                        aux=j
+                    end
+                end
+                array_resul.push(array_copy[aux])
+                array_copy.delete_at(aux)
+                aux=0
+            end
+            
+            expect(array_resul).to eq (@lista_menus.sort{ |a, b| a.gasto_nrg_global(2) <=> b.gasto_nrg_global(2)})
+            }
+            
+            
+        end
+        
+        it "ordena array con each" do
+            
+        end
+        
+        it "ordena array con sort" do
+            array_resul=@array_menus.sort{ |a, b| a.nrg_value <=> b.nrg_value}
+            expect(array_resul).to eq (@array_menus.sort{ |a, b| a.nrg_value <=> b.nrg_value})
+        end
+    end
 end
     

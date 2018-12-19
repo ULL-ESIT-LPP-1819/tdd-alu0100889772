@@ -167,6 +167,24 @@ Node = Struct.new(:value, :next, :prev) do
         chain[0,chain.size-1]
     end
     
+    def to_array
+        nodo = self.get_head
+        array = []
+        fin=false
+        array.push(nodo.value)
+        while(fin==false) do
+            
+            if(nodo!=self.get_tail)
+                nodo = nodo.next
+                array.push(nodo.value)
+            end
+            if(nodo==self.get_tail)
+                fin=true
+            end
+        end
+        array
+    end
+    
     # Método get_head del struct
     # @return [Node] devuelve el nodo que está a la CABEZA de la lista
     def get_head
@@ -449,11 +467,11 @@ class Menu
 	end
 	
 	def to_s
-		@alimentos.to_s
+		@comida.to_s
 	end	
 
-	def valor_energetico
-		@alimentos.map{|x| x.nrg_cal}.reduce(:+)
+	def nrg_value
+		@comida.map{|x| x.nrg_cal}.reduce(:+)
 	end
 	
 	def insert_comida(comida)
