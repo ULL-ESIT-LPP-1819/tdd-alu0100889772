@@ -145,7 +145,7 @@ Node = Struct.new(:value, :next, :prev) do
     
     include Enumerable
     
-    attr_reader :head, :tail
+    attr_reader :head, :tail, :size
     
     # Método to_s del struct
     # @return [String] to_s de cada valor de los nodos de la lista
@@ -220,10 +220,12 @@ Node = Struct.new(:value, :next, :prev) do
     def push_tail(value)
         nuevo_nodo = Node.new(value, nil, self.get_tail)
         if(empty)
+            @size=1
             self.value=value
             self.next=nil
             self.prev=nil
         elsif(!empty)
+            @size+=1
             self.get_tail.next=nuevo_nodo
         end
     end
@@ -233,10 +235,12 @@ Node = Struct.new(:value, :next, :prev) do
     def push_head(value)
         nuevo_nodo = Node.new(value, self.get_head, nil)
         if(empty)
+            @size=1
             self.value=value
             self.next=nil
             self.prev=nil
         elsif(!empty)
+            @size+=1
             self.get_head.prev=nuevo_nodo
         end
     end

@@ -87,17 +87,17 @@ RSpec.describe Etiqueta do
         
         @array_menus=[@menu1,@menu2,@menu3,@menu4,@menu5,@menu6,@menu7,@menu8,@menu9,@menu10]
         
-        @lista_menus=Node.new
-        @lista_menus.push_tail(@persona1)
-        @lista_menus.push_tail(@persona2)
-        @lista_menus.push_tail(@persona3)
-        @lista_menus.push_tail(@persona4)
-        @lista_menus.push_tail(@persona5)
-        @lista_menus.push_tail(@persona6)
-        @lista_menus.push_tail(@persona7)
-        @lista_menus.push_tail(@persona8)
-        @lista_menus.push_tail(@persona9)
-        @lista_menus.push_tail(@persona10)
+        @lista_personas=Node.new
+        @lista_personas.push_tail(@persona1)
+        @lista_personas.push_tail(@persona2)
+        @lista_personas.push_tail(@persona3)
+        @lista_personas.push_tail(@persona4)
+        @lista_personas.push_tail(@persona5)
+        @lista_personas.push_tail(@persona6)
+        @lista_personas.push_tail(@persona7)
+        @lista_personas.push_tail(@persona8)
+        @lista_personas.push_tail(@persona9)
+        @lista_personas.push_tail(@persona10)
     end
     
     it "los menús funcionan" do
@@ -107,60 +107,79 @@ RSpec.describe Etiqueta do
     Benchmark.bm do |x|
     
         it "ordena array con for" do
+
+            array_copy = @array_menus.dup
+            @array_resul = []
+            aux=0
             
-                
             x.report("for array:"){
-                
-                array_copy = @array_menus.dup
-                array_resul = []
-                aux=0
                 for i in 0..@array_menus.size-1
                     for j in 0..array_copy.size-1
                         if array_copy[j].nrg_value < array_copy[aux].nrg_value
                             aux=j
                         end
                     end
-                    array_resul.push(array_copy[aux])
+                    @array_resul.push(array_copy[aux])
                     array_copy.delete_at(aux)
                     aux=0
                 end
-                
-                expect(array_resul).to eq (@array_menus.sort{ |a, b| a.nrg_value <=> b.nrg_value})
-            }
+            }    
+                expect(@array_resul).to eq (@array_menus.sort{ |a, b| a.nrg_value <=> b.nrg_value})
+            
             
         end
         
         it "ordena lista con for" do
             
-            x.report("for lista:"){
             
-            array_copy = @lista_menus.to_array
-            array_resul = []
+            
+            array_copy = @lista_personas.to_array
+            @array_resul = []
             aux=0
-            for i in 0..@array_menus.size-1
-                for j in 0..array_copy.size-1
-                    if array_copy[j].gasto_nrg_global(2) < array_copy[aux].gasto_nrg_global(2)
-                        aux=j
-                    end
-                end
-                array_resul.push(array_copy[aux])
-                array_copy.delete_at(aux)
-                aux=0
-            end
             
-            expect(array_resul).to eq (@lista_menus.sort{ |a, b| a.gasto_nrg_global(2) <=> b.gasto_nrg_global(2)})
+            x.report("for lista:"){
+                for i in 0..@lista_personas.size-1
+                    for j in 0..array_copy.size-1
+                        if array_copy[j].gasto_nrg_global(2) < array_copy[aux].gasto_nrg_global(2)
+                            aux=j
+                        end
+                    end
+                    @array_resul.push(array_copy[aux])
+                    array_copy.delete_at(aux)
+                    aux=0
+                end
             }
+            expect(@array_resul).to eq (@lista_personas.sort{ |a, b| a.gasto_nrg_global(2) <=> b.gasto_nrg_global(2)})
+            
             
             
         end
         
         it "ordena array con each" do
-            
+            #x.report("each array:"){
+                #array_copy = @array_menus.dup
+                #array_copy.each{ |x| array_copy.each{ |y| array_copy[x],lista[y] = array_copy[y],dll_copy[x] if array_copy[x].nrg_value < array_copy[y].nrg_value}}
+            #}
         end
         
         it "ordena array con sort" do
-            array_resul=@array_menus.sort{ |a, b| a.nrg_value <=> b.nrg_value}
-            expect(array_resul).to eq (@array_menus.sort{ |a, b| a.nrg_value <=> b.nrg_value})
+            x.report("sort array:"){
+                @array_resul=@array_menus.sort{ |a, b| a.nrg_value <=> b.nrg_value}
+            }
+            for i in 0..@array_resul.size-2
+                expect(@array_resul[i].nrg_value).to be <= (@array_resul[i+1].nrg_value)
+            end
+            
+        end
+        
+        it "ordena lista con sort" do
+            x.report("sort lista:"){
+                @array_resul=@lista_personas.sort{ |a, b| a.gasto_nrg_global(2) <=> b.gasto_nrg_global(2)}
+            }
+            for i in 0..@array_resul.size-2
+                expect(@array_resul[i].gasto_nrg_global(2)).to be <= (@array_resul[i+1].gasto_nrg_global(2))
+            end
+            
         end
     end
 end

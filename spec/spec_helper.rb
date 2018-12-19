@@ -1,7 +1,7 @@
 require "bundler/setup"
 require "etiqueta/etiqueta"
-require ’coveralls’
-Coveralls.wear!
+#require 'coveralls'
+#Coveralls.wear!
 
 
 
