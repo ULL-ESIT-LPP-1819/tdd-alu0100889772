@@ -440,3 +440,32 @@ class Individuo < Antropometria
     end
         
 end
+
+class Menu
+
+	def initialize(individuo)
+		@individuo = individuo
+		@comida = Node.new
+	end
+	
+	def to_s
+		@alimentos.to_s
+	end	
+
+	def valor_energetico
+		@alimentos.map{|x| x.nrg_cal}.reduce(:+)
+	end
+	
+	def insert_comida(comida)
+		@comida.push_tail(comida)
+	end
+
+	def verificar
+        if(@comida.map{|x| x.nrg_cal}.reduce(:+).between?(@individuo.gasto_nrg_global(2)-0.1*@individuo.gasto_nrg_global(2),@individuo.gasto_nrg_global(2)+0.1*@individuo.gasto_nrg_global(2)))
+                return true
+        else
+                return false
+        end
+    end
+
+end
