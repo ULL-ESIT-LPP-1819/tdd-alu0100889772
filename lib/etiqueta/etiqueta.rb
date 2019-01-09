@@ -482,7 +482,7 @@ class Menu_antiguo
 		@comida.push_tail(comida)
 	end
 
-	def verificar
+    def verificar
         if(@comida.map{|x| x.nrg_cal}.reduce(:+).between?(@individuo.gasto_nrg_global(2)-0.1*@individuo.gasto_nrg_global(2),@individuo.gasto_nrg_global(2)+0.1*@individuo.gasto_nrg_global(2)))
                 return true
         else
@@ -510,6 +510,99 @@ class Menu
                 instance_eval(&block) 
             end
         end
+    end
+    
+    def to_s
+        output = "\n\t#{@name}"
+        output << "\t\t\t\tComposición nutricional\n"
+        output << "\t=============================================================================================\n"
+        output << "\t\t\t\t\tgrasas\tcarbohidratos\tproteínas\tfibra\tsal\tvalor energético\n"
+        output << "\tDesayuno\n"
+        
+        @desayuno.each do |des|
+            output << "\t\"#{des[:descripcion]}\""  
+            if(des[:descripcion].size<6)
+                output << "\t"
+            end
+            if(des[:descripcion].size<13)
+                output << "\t"
+            end
+            if(des[:descripcion].size<22)
+                output << "\t"
+            end
+            output << "\t#{'%.2f' % des[:grasas]}"
+            output << "\t#{'%.2f' % des[:carbohidratos].round(2)}"
+            output << "\t\t#{'%.2f' % des[:proteinas].round(2)}"
+            if (des[:fibra]!=nil)
+                output << "\t\t#{'%.2f' % des[:fibra].round(2)}"
+            elsif (des[:fibra]==nil)
+                output << "\t\t0.00"
+            end
+            if (des[:sal]!=nil)
+                output << "\t#{'%.2f' % des[:sal].round(2)}"
+            elsif (des[:sal]==nil)
+                output << "\t0.00"
+            end
+            output << "\n"
+        end
+    
+        output << "\n\tAlmuerzo\n"
+        @almuerzo.each do |alm|
+            output << "\t\"#{alm[:descripcion]}\"" 
+            if(alm[:descripcion].size<6)
+                output << "\t"
+            end
+            if(alm[:descripcion].size<11)
+                output << "\t"
+            end
+            if(alm[:descripcion].size<21)
+                output << "\t"
+            end
+            output << "\t#{'%.2f' % alm[:grasas]}"
+            output << "\t#{'%.2f' % alm[:carbohidratos].round(2)}"
+            output << "\t\t#{'%.2f' % alm[:proteinas].round(2)}"
+            if (alm[:fibra]!=nil)
+                output << "\t\t#{'%.2f' % alm[:fibra].round(2)}"
+            elsif (alm[:fibra]==nil)
+                output << "\t\t0.00"
+            end
+            if (alm[:sal]!=nil)
+                output << "\t#{'%.2f' % alm[:sal].round(2)}"
+            elsif (alm[:sal]==nil)
+                output << "\t0.00"
+            end
+            output << "\n"
+        end
+    
+        output << "\n\tCena\n"
+        @cena.each do |cen|
+            output << "\t\"#{cen[:descripcion]}\""
+            if(cen[:descripcion].size<6)
+                output << "\t"
+            end
+            if(cen[:descripcion].size<11)
+                output << "\t"
+            end
+            if(cen[:descripcion].size<21)
+                output << "\t\t"
+            end
+            output << "\t#{'%.2f' % cen[:grasas]}"
+            output << "\t#{'%.2f' % cen[:carbohidratos].round(2)}"
+            output << "\t\t#{'%.2f' % cen[:proteinas].round(2)}"
+            if (cen[:fibra]!=nil)
+                output << "\t\t#{'%.2f' % cen[:fibra].round(2)}"
+            elsif (cen[:fibra]==nil)
+                output << "\t\t0.00"
+            end
+            if (cen[:sal]!=nil)
+                output << "\t#{'%.2f' % cen[:sal].round(2)}"
+            elsif (cen[:sal]==nil)
+                output << "\t0.00"
+            end
+            output << "\n"
+        end
+        
+        output
     end
     
     def titulo(aux)

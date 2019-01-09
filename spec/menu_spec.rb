@@ -197,7 +197,7 @@ RSpec.describe Etiqueta do
                         :fibra => 2.3,
                         :sal => 0.06
             desayuno    :descripcion => "Actimel",
-                        :porcion => "1 porci´on",
+                        :porcion => "1 porción",
                         :gramos => 100,
                         :grasas => 3.4,
                         :carbohidratos => 4.4,
@@ -212,7 +212,7 @@ RSpec.describe Etiqueta do
                         :fibra => 1.4,
                         :sal => 0.04
             almuerzo    "Lentejas",
-                        :porcion => "1/2 cuchar´on",
+                        :porcion => "1/2 cucharón",
                         :grasas => 0.4,
                         :carbohidratos => 20.0,
                         :proteinas => 9.0,
@@ -236,6 +236,74 @@ RSpec.describe Etiqueta do
 
         
     end
+    
+    it "saca to_s" do
+        menu = Menu.new("Lunes") do
+            titulo      "Bajo en calorías"
+            ingesta     :min => 30, :max => 35
+            desayuno    :descripcion => "Pan de trigo integral",
+                        :porcion => "1 rodaja",
+                        :gramos => 100,
+                        :grasas => 3.3,
+                        :carbohidratos => 54.0,
+                        :proteinas => 11.0,
+                        :fibra => 2.3,
+                        :sal => 0.06
+            desayuno    :descripcion => "Actimel",
+                        :porcion => "1 porción",
+                        :gramos => 100,
+                        :grasas => 3.4,
+                        :carbohidratos => 4.4,
+                        :proteinas => 3.6,
+                        :sal => 0.05
+            almuerzo    :descripcion => "Arroz",
+                        :porcion => "1 taza",
+                        :gramos => 100,
+                        :grasas => 0.9,
+                        :carbohidratos => 81.6,
+                        :proteinas => 6.67,
+                        :fibra => 1.4,
+                        :sal => 0.04
+            almuerzo    :descripcion => "Lentejas",
+                        :porcion => "1/2 cucharón",
+                        :grasas => 0.4,
+                        :carbohidratos => 20.0,
+                        :proteinas => 9.0,
+                        :fibra => 8.0,
+                        :sal => 0.02
+            almuerzo    :descripcion => "Naranja",
+                        :porcion => "1 pieza",
+                        :gramos => 100,
+                        :grasas => 0.12,
+                        :carbohidratos => 11.75,
+                        :proteinas => 0.94,
+                        :fibra => 2.4
+            cena        :descripcion => "Leche entera hacendado",
+                        :porcion => "1 vaso",
+                        :gramos => 100,
+                        :grasas => 3.6,
+                        :carbohidratos => 4.6,
+                        :proteinas => 3.1,
+                        :sal => 0.13
+        end
+        
+        expect(menu.to_s).to eq("
+\tLunes\t\t\t\tComposición nutricional
+\t=============================================================================================
+\t\t\t\t\tgrasas\tcarbohidratos\tproteínas\tfibra\tsal\tvalor energético
+\tDesayuno
+\t\"Pan de trigo integral\"\t\t3.30\t54.00\t\t11.00\t\t2.30\t0.06\t28.97
+\t\"Actimel\"\t\t\t3.40\t4.40\t\t3.60\t\t0.00\t0.05\t6.26
+\tAlmuerzo
+\t\"Arroz\"\t\t\t\t0.90\t81.60\t\t6.67\t\t1.40\t0.04\t36,12
+\t\"Lentejas\"\t\t\t0.40\t20.00\t\t9.00\t\t8.00\t0.02\t11,96
+\t\"Naranja\"\t\t\t0.12\t11.75\t\t0.94\t\t2.40\t0.00\t5,18
+\tCena
+\t\"Leche entera hacendado\"\t3.60\t4.60\t\t3.10\t\t0.00\t0.13\t6,32
+\tValor energético total\t\t94,81")
+
+
+end
     
     
     
