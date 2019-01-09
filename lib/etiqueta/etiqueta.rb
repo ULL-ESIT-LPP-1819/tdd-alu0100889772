@@ -511,4 +511,59 @@ class Menu
             end
         end
     end
+    
+    def titulo(aux)
+        @titulo=aux
+    end
+    
+    def ingesta(aux, options = {})
+        ing = aux
+        ing << " (#{options[:min]})" if options[:min]
+        ing << " (#{options[:max]})" if options[:max]
+    
+        @ingesta << ing
+    end
+    
+    def desayuno(aux, options = {})
+        des = aux
+        des << " (#{options[:descripcion]})" if options[:descripcion]
+        des << " (#{options[:porcion]})" if options[:porcion]
+        des << " (#{options[:gramos]})" if options[:gramos]
+        des << " (#{options[:grasas]})" if options[:grasas]
+        des << " (#{options[:carbohidratos]})" if options[:carbohidratos]
+        des << " (#{options[:proteinas]})" if options[:proteinas]
+        des << " (#{options[:fibra]})" if options[:fibra]
+        des << " (#{options[:sal]})" if options[:sal]
+        
+        @desayuno << des
+    end
+    
+    def almuerzo(aux, options = {})
+        alm = aux
+        alm << " (#{options[:descripcion]})" if options[:descripcion]
+        alm << " (#{options[:porcion]})" if options[:porcion]
+        alm << " (#{options[:gramos]})" if options[:gramos]
+        alm << " (#{options[:grasas]})" if options[:grasas]
+        alm << " (#{options[:carbohidratos]})" if options[:carbohidratos]
+        alm << " (#{options[:proteinas]})" if options[:proteinas]
+        alm << " (#{options[:fibra]})" if options[:fibra]
+        alm << " (#{options[:sal]})" if options[:sal]
+           
+        @almuerzo << alm
+    end
+    
+    def cena(aux, options = {})
+        
+        cen = aux
+        cen << " (#{options[:descripcion]})" if options[:descripcion]
+        cen << " (#{options[:porcion]})" if options[:porcion]
+        cen << " (#{options[:gramos]})" if options[:gramos]
+        cen << " (#{options[:grasas]})" if options[:grasas]
+        cen << " (#{options[:carbohidratos]})" if options[:carbohidratos]
+        cen << " (#{options[:proteinas]})" if options[:proteinas]
+        cen << " (#{options[:fibra]})" if options[:fibra]
+        cen << " (#{options[:sal]})" if options[:sal]
+        
+        @cena << cen
+    end
 end
