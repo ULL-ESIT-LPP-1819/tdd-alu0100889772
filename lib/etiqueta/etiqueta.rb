@@ -512,7 +512,10 @@ class Menu
         end
     end
     
+    #####################################################################################################################
     def to_s
+        total=0
+        
         output = "\n\t#{@name}"
         output << "\t\t\t\tComposición nutricional\n"
         output << "\t=============================================================================================\n"
@@ -531,19 +534,21 @@ class Menu
                 output << "\t"
             end
             output << "\t#{'%.2f' % des[:grasas]}"
-            output << "\t#{'%.2f' % des[:carbohidratos].round(2)}"
-            output << "\t\t#{'%.2f' % des[:proteinas].round(2)}"
+            output << "\t#{'%.2f' % des[:carbohidratos]}"
+            output << "\t\t#{'%.2f' % des[:proteinas]}"
             if (des[:fibra]!=nil)
-                output << "\t\t#{'%.2f' % des[:fibra].round(2)}"
+                output << "\t\t#{'%.2f' % des[:fibra]}"
             elsif (des[:fibra]==nil)
                 output << "\t\t0.00"
             end
             if (des[:sal]!=nil)
-                output << "\t#{'%.2f' % des[:sal].round(2)}"
+                output << "\t#{'%.2f' % des[:sal]}"
             elsif (des[:sal]==nil)
                 output << "\t0.00"
             end
+            output << "\t#{'%.2f' % nrg_cal(des)}"
             output << "\n"
+            total+=nrg_cal(des)
         end
     
         output << "\n\tAlmuerzo\n"
@@ -559,19 +564,21 @@ class Menu
                 output << "\t"
             end
             output << "\t#{'%.2f' % alm[:grasas]}"
-            output << "\t#{'%.2f' % alm[:carbohidratos].round(2)}"
-            output << "\t\t#{'%.2f' % alm[:proteinas].round(2)}"
+            output << "\t#{'%.2f' % alm[:carbohidratos]}"
+            output << "\t\t#{'%.2f' % alm[:proteinas]}"
             if (alm[:fibra]!=nil)
-                output << "\t\t#{'%.2f' % alm[:fibra].round(2)}"
+                output << "\t\t#{'%.2f' % alm[:fibra]}"
             elsif (alm[:fibra]==nil)
                 output << "\t\t0.00"
             end
             if (alm[:sal]!=nil)
-                output << "\t#{'%.2f' % alm[:sal].round(2)}"
+                output << "\t#{'%.2f' % alm[:sal]}"
             elsif (alm[:sal]==nil)
                 output << "\t0.00"
             end
+            output << "\t#{'%.2f' % nrg_cal(alm)}"
             output << "\n"
+            total+=nrg_cal(alm)
         end
     
         output << "\n\tCena\n"
@@ -587,23 +594,30 @@ class Menu
                 output << "\t\t"
             end
             output << "\t#{'%.2f' % cen[:grasas]}"
-            output << "\t#{'%.2f' % cen[:carbohidratos].round(2)}"
-            output << "\t\t#{'%.2f' % cen[:proteinas].round(2)}"
+            output << "\t#{'%.2f' % cen[:carbohidratos]}"
+            output << "\t\t#{'%.2f' % cen[:proteinas]}"
             if (cen[:fibra]!=nil)
-                output << "\t\t#{'%.2f' % cen[:fibra].round(2)}"
+                output << "\t\t#{'%.2f' % cen[:fibra]}"
             elsif (cen[:fibra]==nil)
                 output << "\t\t0.00"
             end
             if (cen[:sal]!=nil)
-                output << "\t#{'%.2f' % cen[:sal].round(2)}"
+                output << "\t#{'%.2f' % cen[:sal]}"
             elsif (cen[:sal]==nil)
                 output << "\t0.00"
             end
+            output << "\t#{'%.2f' % nrg_cal(cen)}"
             output << "\n"
+            total+=nrg_cal(cen)
         end
+        
+        output << "\tValor energético total\t\t"
+        output << "#{'%.2f' % total}"
         
         output
     end
+    
+    ###################################################################################################################
     
     def titulo(aux)
         @titulo=aux
@@ -658,5 +672,23 @@ class Menu
         cen << " (#{options[:sal]})" if options[:sal]
         
         @cena << cen
+    end
+    
+    def nrg_cal(comida)
+        nrg_value=0
+        #(@grasa*37)+(@hidrato*17)+(@proteina*17)+(@sal*25)+(@monoinsat*37)+(@poliinsat*37)+(@polialco*10)+(@almidon*17)+(@fibra*8)
+        if comida.class == Hash
+        	nrg_value = (comida[:grasas] * 9) + (comida[:carbohidratos] * 4) + (comida[:proteinas] * 4)
+    
+        	if comida[:fibra] != nil
+        	    nrg_value += comida[:fibra] * 2
+        	end      
+        	
+            if comida[:sal] != nil
+                nrg_value += comida[:sal] * 6
+            end
+        end
+    	
+    	nrg_value/10
     end
 end

@@ -292,15 +292,17 @@ RSpec.describe Etiqueta do
 \t=============================================================================================
 \t\t\t\t\tgrasas\tcarbohidratos\tproteínas\tfibra\tsal\tvalor energético
 \tDesayuno
-\t\"Pan de trigo integral\"\t\t3.30\t54.00\t\t11.00\t\t2.30\t0.06\t28.97
-\t\"Actimel\"\t\t\t3.40\t4.40\t\t3.60\t\t0.00\t0.05\t6.26
+\t\"Pan de trigo integral\"\t\t3.30\t54.00\t\t11.00\t\t2.30\t0.06\t29.47
+\t\"Actimel\"\t\t\t3.40\t4.40\t\t3.60\t\t0.00\t0.05\t6.29
+
 \tAlmuerzo
-\t\"Arroz\"\t\t\t\t0.90\t81.60\t\t6.67\t\t1.40\t0.04\t36,12
-\t\"Lentejas\"\t\t\t0.40\t20.00\t\t9.00\t\t8.00\t0.02\t11,96
-\t\"Naranja\"\t\t\t0.12\t11.75\t\t0.94\t\t2.40\t0.00\t5,18
+\t\"Arroz\"\t\t\t\t0.90\t81.60\t\t6.67\t\t1.40\t0.04\t36.42
+\t\"Lentejas\"\t\t\t0.40\t20.00\t\t9.00\t\t8.00\t0.02\t13.57
+\t\"Naranja\"\t\t\t0.12\t11.75\t\t0.94\t\t2.40\t0.00\t5.66
+
 \tCena
-\t\"Leche entera hacendado\"\t3.60\t4.60\t\t3.10\t\t0.00\t0.13\t6,32
-\tValor energético total\t\t94,81")
+\t\"Leche entera hacendado\"\t3.60\t4.60\t\t3.10\t\t0.00\t0.13\t6.40
+\tValor energético total\t\t97.81")
 
 
 end
