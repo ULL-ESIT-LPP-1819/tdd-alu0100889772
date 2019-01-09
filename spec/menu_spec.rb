@@ -15,70 +15,70 @@ RSpec.describe Etiqueta do
         @persona9 = Individuo.new(90.0,1.60,55,1,100.0,115.0)
         @persona10 = Individuo.new(90.0,1.70,55,0,110.0,115.0)
         
-        @menu1 = Menu.new(@persona1)
+        @menu1 = Menu_antiguo.new(@persona1)
         @menu1.insert_comida(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu1.insert_comida(Etiq.new("Spaghetti",1.2,0.2,57.6,2.6,9.2,0.01))
         @menu1.insert_comida(Etiq.new("Cerelaes",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu1.insert_comida(Etiq.new("Leche",0.2,0.19,4.5,4.5,9.0,0.2))
         @menu1.insert_comida(Etiq.new("Carne",10.0,9.0,4.0,4.0,6.0,0.5))
         
-        @menu2 = Menu.new(@persona2)
+        @menu2 = Menu_antiguo.new(@persona2)
         @menu2.insert_comida(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu2.insert_comida(Etiq.new("Spaghetti",1.2,0.2,57.6,2.6,9.2,0.01))
         @menu2.insert_comida(Etiq.new("Cerelaes",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu2.insert_comida(Etiq.new("Leche",0.2,0.19,4.5,4.5,9.0,0.2))
         @menu2.insert_comida(Etiq.new("Carne",10.0,9.0,4.0,4.0,6.0,0.5))
         
-        @menu3 = Menu.new(@persona1)
+        @menu3 = Menu_antiguo.new(@persona1)
         @menu3.insert_comida(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu3.insert_comida(Etiq.new("Spaghetti",1.2,0.2,57.6,2.6,9.2,0.01))
         @menu3.insert_comida(Etiq.new("Cerelaes",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu3.insert_comida(Etiq.new("Leche",0.2,0.19,4.5,4.5,9.0,0.2))
         @menu3.insert_comida(Etiq.new("Carne",10.0,9.0,4.0,4.0,6.0,0.5))
         
-        @menu4 = Menu.new(@persona4)
+        @menu4 = Menu_antiguo.new(@persona4)
         @menu4.insert_comida(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu4.insert_comida(Etiq.new("Spaghetti",1.2,0.2,57.6,2.6,9.2,0.01))
         @menu4.insert_comida(Etiq.new("Cerelaes",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu4.insert_comida(Etiq.new("Leche",0.2,0.19,4.5,4.5,9.0,0.2))
         @menu4.insert_comida(Etiq.new("Carne",10.0,9.0,4.0,4.0,6.0,0.5))
         
-        @menu5 = Menu.new(@persona5)
+        @menu5 = Menu_antiguo.new(@persona5)
         @menu5.insert_comida(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu5.insert_comida(Etiq.new("Spaghetti",1.2,0.2,57.6,2.6,9.2,0.01))
         @menu5.insert_comida(Etiq.new("Cerelaes",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu5.insert_comida(Etiq.new("Leche",0.2,0.19,4.5,4.5,9.0,0.2))
         @menu5.insert_comida(Etiq.new("Carne",10.0,9.0,4.0,4.0,6.0,0.5))
         
-        @menu6 = Menu.new(@persona1)
+        @menu6 = Menu_antiguo.new(@persona1)
         @menu6.insert_comida(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu6.insert_comida(Etiq.new("Spaghetti",1.2,0.2,57.6,2.6,9.2,0.01))
         @menu6.insert_comida(Etiq.new("Cerelaes",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu6.insert_comida(Etiq.new("Leche",0.2,0.19,4.5,4.5,9.0,0.2))
         @menu6.insert_comida(Etiq.new("Carne",10.0,9.0,4.0,4.0,6.0,0.5))
         
-        @menu7 = Menu.new(@persona7)
+        @menu7 = Menu_antiguo.new(@persona7)
         @menu7.insert_comida(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu7.insert_comida(Etiq.new("Spaghetti",1.2,0.2,57.6,2.6,9.2,0.01))
         @menu7.insert_comida(Etiq.new("Cerelaes",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu7.insert_comida(Etiq.new("Leche",0.2,0.19,4.5,4.5,9.0,0.2))
         @menu7.insert_comida(Etiq.new("Carne",10.0,9.0,4.0,4.0,6.0,0.5))
         
-        @menu8 = Menu.new(@persona1)
+        @menu8 = Menu_antiguo.new(@persona1)
         @menu8.insert_comida(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu8.insert_comida(Etiq.new("Spaghetti",1.2,0.2,57.6,2.6,9.2,0.01))
         @menu8.insert_comida(Etiq.new("Cerelaes",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu8.insert_comida(Etiq.new("Leche",0.2,0.19,4.5,4.5,9.0,0.2))
         @menu8.insert_comida(Etiq.new("Carne",10.0,9.0,4.0,4.0,6.0,0.5))
     
-        @menu9 = Menu.new(@persona9)
+        @menu9 = Menu_antiguo.new(@persona9)
         @menu9.insert_comida(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu9.insert_comida(Etiq.new("Spaghetti",1.2,0.2,57.6,2.6,9.2,0.01))
         @menu9.insert_comida(Etiq.new("Cerelaes",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu9.insert_comida(Etiq.new("Leche",0.2,0.19,4.5,4.5,9.0,0.2))
         @menu9.insert_comida(Etiq.new("Carne",10.0,9.0,4.0,4.0,6.0,0.5))
     
-        @menu10 = Menu.new(@persona1)
+        @menu10 = Menu_antiguo.new(@persona1)
         @menu10.insert_comida(Etiq.new("Queso",0.1,0.09,3.5,3.5,8.0,0.1))
         @menu10.insert_comida(Etiq.new("Spaghetti",1.2,0.2,57.6,2.6,9.2,0.01))
         @menu10.insert_comida(Etiq.new("Cerelaes",0.1,0.09,3.5,3.5,8.0,0.1))
@@ -182,5 +182,62 @@ RSpec.describe Etiqueta do
             
         end
     end
+    
+    it "crea menu nuevo" do
+        
+        menu = Menu.new("Lunes") do
+            titulo      "Bajo en calorías"
+            ingesta     :min => 30, :max => 35
+            desayuno    :descripcion => "Pan de trigo integral",
+                        :porcion => "1 rodaja",
+                        :gramos => 100,
+                        :grasas => 3.3,
+                        :carbohidratos => 54.0,
+                        :proteinas => 11.0,
+                        :fibra => 2.3,
+                        :sal => 0.06
+            desayuno    :descripcion => "Actimel",
+                        :porcion => "1 porci´on",
+                        :gramos => 100,
+                        :grasas => 3.4,
+                        :carbohidratos => 4.4,
+                        :proteinas => 3.6,
+                        :sal => 0.05
+            almuerzo    :description => "Arroz",
+                        :porcion => "1 taza",
+                        :gramos => 100,
+                        :grasas => 0.9,
+                        :carbohidratos => 81.6,
+                        :proteinas => 6.67,
+                        :fibra => 1.4,
+                        :sal => 0.04
+            almuerzo    "Lentejas",
+                        :porcion => "1/2 cuchar´on",
+                        :grasas => 0.4,
+                        :carbohidratos => 20.0,
+                        :proteinas => 9.0,
+                        :fibra => 8.0,
+                        :sal => 0.02
+            almuerzo    :descripcion => "Naranja",
+                        :porcion => "1 pieza",
+                        :gramos => 100,
+                        :grasas => 0.12,
+                        :carbohidratos => 11.75,
+                        :proteinas => 0.94,
+                        :fibra => 2.4
+            cena        :descripcion => "Leche entera hacendado",
+                        :porcion => "1 vaso",
+                        :gramos => 100,
+                        :grasas => 3.6,
+                        :carbohidratos => 4.6,
+                        :proteinas => 3.1,
+                        :sal => 0.13
+        end
+
+        
+    end
+    
+    
+    
 end
     
