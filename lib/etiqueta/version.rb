@@ -1,6 +1,6 @@
 require 'etiqueta/etiqueta'
 
 module Etiqueta
-  VERSION = "0.1.0"
+  VERSION = "0.1.1"
 end
 
